@@ -124,7 +124,7 @@ const [activeImage, setActiveImage] = useState(0)
 
       <div className="relative flex justify-end h-96 w-full overflow-hidden font-display">
         <img src={propertyImages[activeImage]} alt="" className="absolute object-cover object-center inset-0 h-full w-full" />
-        <div className="px-6 relative flex flex-col  z-10 h-full md:w-[30%] w-[40%] bg-black/55 shadow-2xl shadow-black ">
+        <div className="px-6 relative flex flex-col  z-10 h-full md:w-[30%] w-[40%] md:bg-black/95 bg-black/50 shadow-2xl shadow-black ">
             
             <div className="flex flex-col h-[40%] gap-10 ">
                 <span className="md:text-3xl text-xl ">
