@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams, Link } from 'react-router-dom'
 import SampleImg from '../../assets/HeroBG.png'
 import Bathtub from '../../assets/BathtubWhite.png'
 import Bedroom from '../../assets/BedWhite.png'
@@ -167,6 +167,7 @@ const [activeImage, setActiveImage] = useState(0)
         >
             &#8592;
         </button>
+        
 
         {/* Thumbnail Container */}
         <div
@@ -206,51 +207,67 @@ const [activeImage, setActiveImage] = useState(0)
     </div>
 
 
-    <section className="bg-black px-10 py-16 text-white">
-
-    <span className="font-body text-xs text-white/50">
-        PROPERTY RECORD
-    </span>
-
-    <h2 className="font-display text-4xl border-b border-white/50 py-2 w-[75%]">
-        Listing Information
-    </h2>
-
-    <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-3">
-
-        <div>
-        <p className="text-xs text-white/50">Listing ID</p>
-        <p>{listing.id ?? "—"}</p>
-        </div>
-
-        <div>
-        <p className="text-xs text-white/50">Date Listed</p>
-        <p>
-            {listing.listing_date
-            ? new Date(listing.listing_date).toLocaleDateString("en-PH")
-            : "—"}
-        </p>
-        </div>
-
-        <div>
-        <p className="text-xs text-white/50">Listing Status</p>
-        <p className="capitalize">
-            {listing.listing_status ?? "—"}
-        </p>
-        </div>
-
-        <div>
-        <p className="text-xs text-white/50">Property Type</p>
-        <p>{property.property_type ?? "—"}</p>
-        </div>
-
-        <div>
-        <p className="text-xs text-white/50">Property ID</p>
-        <p>{listing.property_id ?? "—"}</p>
-        </div>
-
+    <div className="px-10 mt-10">  
+        <span className="font-body text-xs text-white/50">
+            PROPERTY RECORD
+        </span>
+        <h2 className="font-display text-4xl border-b  border-white/50 py-2 w-[75%]">
+            Listing Information
+        </h2>
     </div>
 
+
+    <section className="bg-black pl-10 py-8 text-white flex justify-between">
+
+        <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-3  w-[50%]">
+            
+            <div>
+            <p className="text-xs text-white/50">Listing ID</p>
+            <p>{listing.id ?? "—"}</p>
+            </div>
+
+            <div>
+            <p className="text-xs text-white/50">Date Listed</p>
+            <p>
+                {listing.listing_date
+                ? new Date(listing.listing_date).toLocaleDateString("en-PH")
+                : "—"}
+            </p>
+            </div>
+
+            <div>
+            <p className="text-xs text-white/50">Listing Status</p>
+            <p className="capitalize">
+                {listing.listing_status ?? "—"}
+            </p>
+            </div>
+
+            <div>
+            <p className="text-xs text-white/50">Property Type</p>
+            <p>{property.property_type ?? "—"}</p>
+            </div>
+
+            <div>
+            <p className="text-xs text-white/50">Property ID</p>
+            <p>{listing.property_id ?? "—"}</p>
+            </div>
+
+        </div>
+        <div className=" w-[25%] p-5 flex flex-col gap-1">
+            <span className="text-4xl text-white/75 font-display">Interested?</span>
+            <span className="text-md text-white/90 font-body">Make this property yours</span>
+            <span className="text-xs  text-white/75 font-body">Have questions about this property?<br/>Send and inquiry to get started</span>
+            <div className="flex justify-center mt-10 mb-2">
+                <Link
+                to="/"
+                className="border w-[50%] h-9 rounded-md text-center leading-8 ">
+                    Inquiry
+                </Link>
+            </div>
+
+        
+        </div>
+        
     </section>
 
     
