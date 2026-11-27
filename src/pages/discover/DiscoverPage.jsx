@@ -1,6 +1,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSavedProperties } from '../../context/SavedPropertiesContext'
 
 const API_URL =
   'https://databasesample.com/mock/property-listings/listings?listing_status=active&_expand=property'
@@ -23,6 +24,7 @@ function formatPrice(price) {
 }
 
 function DiscoverPage() {
+    const { toggleSaved, isSaved } = useSavedProperties()
 
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -370,6 +372,17 @@ function DiscoverPage() {
                       loading="lazy"
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                     />
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            toggleSaved(String(listing.id))
+                        }}
+                        className="absolute top-4 right-4 z-20 text-2xl bg-black/50 rounded-full h-8 w-8 hover:scale-110 hover:bg-white hover:text-black transition-all duration-300 "
+                        aria-label={isSaved(String(listing.id)) ? 'Remove from saved properties' : 'Save property'}
+                        >
+                        {isSaved(String(listing.id)) ? '♥' : '♡'}
+                    </button>
 
                     <span className="absolute left-4 top-4 bg-black/70 px-3 py-2 text-[10px] tracking-wider text-white">
                       {listing.listing_status?.toUpperCase() || 'PROPERTY'}
